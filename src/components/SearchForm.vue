@@ -14,21 +14,35 @@ export default {
     data(){
         return{
             searchKeyword:'',
-            isShowSearch: false
+            isShowSearch: false,
+            screenSm: false,
         }
     },
     methods:{
         getSearchResults(){
-            if(this.isShowSearch === false){
+            if(!this.isShowSearch && this.screenSm){
                 this.isShowSearch = true;
             }else{
-                this.axios.get(`https://www.googleapis.com/youtube/v3/search?&q='${this.searchKeyword}'&maxResults=50&part=snippet&key=AIzaSyCPEn0whbNTdiIE92WTwdbiflXpwgmVBaw`).then((response) => {
+                this.$store.commit("changeLoadingStatus", true);
+                this.axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${this.searchKeyword}&key=AIzaSyCPEn0whbNTdiIE92WTwdbiflXpwgmVBaw`).then((response) => {
                     this.$store.commit("changeSearchResults", response.data);
                     this.isShowSearch = false;
+                    this.$store.commit("changeLoadingStatus", false);
                 })
             }
             
         },
+        setSmallWindow(){
+            if(window.innerWidth < 992){
+                this.screenSm = true;
+            }else{
+                this.screenSm = false;
+            }
+        }
     },
+    created(){
+        this.setSmallWindow();
+        window.addEventListener("resize", this.setSmallWindow);
+    }
 }
 </script>

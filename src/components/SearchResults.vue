@@ -1,10 +1,16 @@
 <template>
-    <section id="search-results">
+    <section id="search-results" v-if="items.length > 0">
         <header class="search-esults-header">
             <h4>About {{totalResults}} Results</h4>
         </header>
         <div class="search-results-container">
-            <Video v-for="video in videos" :key="video.id.videoId"  :title="video.snippet.title" :channelTitle="video.snippet.channelTitle" :description="video.snippet.description" :thumb="video.snippet.thumbnails.high.url" />
+            <div class="video-wrapper" v-for="video in items" :key="video.id.videoId">
+                <Video :title="video.snippet.title" :channelTitle="video.snippet.channelTitle" :description="video.snippet.description" :thumb="video.snippet.thumbnails.high.url" v-if="video.id.kind.split('#')[1] == 'video'"/>
+                <!-- <PlayListCard :video="video" v-else-if="video.id.kind.split('#')[1] == 'playlist'"/>
+                <ChannelCard :video="video" v-else/> -->
+
+            </div>
+            
         </div>
     </section>    
 </template>
@@ -19,18 +25,15 @@ export default {
     },
     data(){
         return{
-            // searchResults: [],
             totalResults: 0,
-            videos: [],
+            items: [],
         }
     },
     watch: {
         '$store.state.globalSearchResults': function() {
-            // this.searchResults = this.$store.state.globalSearchResults;
             this.totalResults = this.$store.state.globalSearchResults.pageInfo.totalResults;
-            this.videos = this.$store.state.globalSearchResults.items;
-            console.log(this.videos);
-        }
+            this.items = this.$store.state.globalSearchResults.items;
+        },
     },
 }
 </script>
