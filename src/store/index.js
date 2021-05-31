@@ -4,6 +4,7 @@ export default createStore({
   state: {
     globalSearchResults: [],
     loading: false,
+    youtubeApiKey: 'AIzaSyDbMvkVBAnAHC3TnJtMH9-1b8XBG9qyHbE'
   },
   getters: {
     globalSearchResults: state => {
@@ -11,6 +12,9 @@ export default createStore({
     },
     loading: state => {
       return state.loading
+    },
+    youtubeApiKey: state => {
+      return state.youtubeApiKey
     },
   },
   mutations: {

@@ -5,7 +5,12 @@ const routes = [
   {
     path: '/',
     name: 'Search',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Search.vue')
+    component: () => import(/* webpackChunkName: "search" */ '../views/Search.vue')
+  },
+  {
+    path: '/videoDetails/:id',
+    name: 'videoDetails',
+    component: () => import(/* webpackChunkName: "videoDetails" */ '../views/videoDetails.vue')
   },
   // {
   //   path: '/about',

@@ -5,13 +5,13 @@
                 <img class="brand" src="@/assets/images/logo.png" alt="">
                 <img class="brand-shape" src="@/assets/images/logo-shape.png" alt="">
             </div>
-            <SearchForm />
+            <search-form />
         </div>
     </header>
 </template>
 
 <script>
-import SearchForm from '@/components/SearchForm'
+import SearchForm from '@/components/Search/SearchForm'
 
 export default {
     name: 'Header',

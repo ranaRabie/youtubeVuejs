@@ -16,15 +16,17 @@ export default {
             searchKeyword:'',
             isShowSearch: false,
             screenSm: false,
+            key: null,
         }
     },
     methods:{
         getSearchResults(){
+            this.$router.push({ path: '/' });
             if(!this.isShowSearch && this.screenSm){
                 this.isShowSearch = true;
             }else{
                 this.$store.commit("changeLoadingStatus", true);
-                this.axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${this.searchKeyword}&key=AIzaSyCPEn0whbNTdiIE92WTwdbiflXpwgmVBaw`).then((response) => {
+                this.axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${this.searchKeyword}&key=${this.key}`).then((response) => {
                     this.$store.commit("changeSearchResults", response.data);
                     this.isShowSearch = false;
                     this.$store.commit("changeLoadingStatus", false);
@@ -42,6 +44,7 @@ export default {
     },
     created(){
         this.setSmallWindow();
+        this.key = this.$store.state.youtubeApiKey;
         window.addEventListener("resize", this.setSmallWindow);
     }
 }

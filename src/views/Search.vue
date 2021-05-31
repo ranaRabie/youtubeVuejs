@@ -3,12 +3,12 @@
         <div v-if="isLoading" class="loader-container">
             <img src="@/assets/images/loader.gif" alt="" />
         </div>
-        <SearchResults />
+        <search-results v-show="!isLoading"   />
     </div>
 </template>
 
 <script>
-import SearchResults from '@/components/SearchResults'
+import SearchResults from '@/components/Search/SearchResults'
 
 export default {
     name: 'Search',

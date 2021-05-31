@@ -4,24 +4,24 @@
             <h4>About {{totalResults}} Results</h4>
         </header>
         <div class="search-results-container">
-            <div class="video-wrapper" v-for="video in items" :key="video.id.videoId">
-                <Video :title="video.snippet.title" :channelTitle="video.snippet.channelTitle" :description="video.snippet.description" :thumb="video.snippet.thumbnails.high.url" v-if="video.id.kind.split('#')[1] == 'video'"/>
+            <article class="video-wrapper" v-for="video in items" :key="video.id.videoId" :id="video.id.videoId">
+                <video-item :video="video" v-if="video.id.kind.split('#')[1] == 'video'"/>
                 <!-- <PlayListCard :video="video" v-else-if="video.id.kind.split('#')[1] == 'playlist'"/>
                 <ChannelCard :video="video" v-else/> -->
 
-            </div>
+            </article>
             
         </div>
     </section>    
 </template>
 
 <script>
-import Video from '@/components/Video'
+import VideoItem from '@/components/Video/VideoItem'
 
 export default {
     name: 'SearchResults',
     components:{
-        Video,
+        VideoItem,
     },
     data(){
         return{
