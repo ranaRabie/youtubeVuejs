@@ -27,8 +27,6 @@ export default {
         const url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${this.relatedVideoId}&type=video&key=${this.key}`;
         this.axios.get(url).then((response) => {
             this.items = response.data.items;
-            console.log('-------------------------------------');
-            console.log(this.items);
         })  
     }
 }

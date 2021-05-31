@@ -4,7 +4,8 @@ export default createStore({
   state: {
     globalSearchResults: [],
     loading: false,
-    youtubeApiKey: 'AIzaSyDbMvkVBAnAHC3TnJtMH9-1b8XBG9qyHbE'
+    youtubeApiKey: 'AIzaSyDbMvkVBAnAHC3TnJtMH9-1b8XBG9qyHbE',
+    searchKeyword: null,
   },
   getters: {
     globalSearchResults: state => {
@@ -16,6 +17,9 @@ export default createStore({
     youtubeApiKey: state => {
       return state.youtubeApiKey
     },
+    searchKeyword: state => {
+      return state.searchKeyword
+    },
   },
   mutations: {
     changeSearchResults (state, globalSearchResults) {
@@ -23,6 +27,9 @@ export default createStore({
     },
     changeLoadingStatus (state, loading) {
       state.loading = loading
+    },
+    changeSearchKeyword (state, keyword) {
+      state.searchKeyword = keyword
     },
   },
   actions: {

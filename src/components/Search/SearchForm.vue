@@ -26,7 +26,7 @@ export default {
                 this.isShowSearch = true;
             }else{
                 this.$store.commit("changeLoadingStatus", true);
-                this.axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${this.searchKeyword}&key=${this.key}`).then((response) => {
+                this.axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${this.searchKeyword}&key=${this.key}`).then((response) => {
                     this.$store.commit("changeSearchResults", response.data);
                     this.isShowSearch = false;
                     this.$store.commit("changeLoadingStatus", false);
@@ -46,6 +46,11 @@ export default {
         this.setSmallWindow();
         this.key = this.$store.state.youtubeApiKey;
         window.addEventListener("resize", this.setSmallWindow);
-    }
+    },
+    watch: {
+        searchKeyword: function() {
+            this.$store.commit("changeSearchKeyword", this.searchKeyword);
+        },
+    },
 }
 </script>
