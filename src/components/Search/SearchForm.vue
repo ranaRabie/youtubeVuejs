@@ -21,7 +21,11 @@ export default {
     },
     methods:{
         getSearchResults(){
-            this.$router.push({ path: '/' });
+            // this.$router.push({ path: '/' });
+            if(this.$router.currentRoute._value.path != '/'){
+                console.log('sss');
+                this.$router.push({ path: '/' });
+            }
             if(!this.isShowSearch && this.screenSm){
                 this.isShowSearch = true;
             }else{

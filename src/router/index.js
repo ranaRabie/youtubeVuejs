@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-// import Search from '../views/Search.vue'
 
 const routes = [
   {
@@ -11,6 +10,11 @@ const routes = [
     path: '/videoDetails/:id',
     name: 'videoDetails',
     component: () => import(/* webpackChunkName: "videoDetails" */ '../views/videoDetails.vue')
+  },
+  {
+    path: '/channelDetails/:id',
+    name: 'channelDetails',
+    component: () => import(/* webpackChunkName: "videoDetails" */ '../views/channelDetails.vue')
   },
 ]
 

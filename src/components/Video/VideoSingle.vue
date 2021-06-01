@@ -1,6 +1,6 @@
 <template>
     <div class="videoDetails_wrapper">
-        <iframe :src="videoEmbed" :title="videoData.snippet.title"></iframe>
+        <iframe :src="videoEmbed" :title="title"></iframe>
         <div class="video-data">
             <div class="data-row">
                 <div class="vid-tit">{{videoData.snippet.title}}</div>
@@ -22,5 +22,11 @@ export default {
       videoEmbed: String,
       videoData: null,
   },
+
+  computed:{
+      title(){
+          return this.videoData != null ? this.videoData.snippet.title : ''
+      }
+  }
 }
 </script>
