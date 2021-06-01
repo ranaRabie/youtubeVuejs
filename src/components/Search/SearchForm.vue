@@ -4,6 +4,7 @@
         <form action="">
             <input v-show="isShowSearch" type="search" v-model="searchKeyword">
             <button type="button" v-on:click="getSearchResults()">search</button>
+            <!-- <router-link to='/'>search</router-link> -->
         </form>
     </div>
 </template>
@@ -13,7 +14,7 @@ export default {
     name: 'SearchForm',
     data(){
         return{
-            searchKeyword:'',
+            searchKeyword:null,
             isShowSearch: false,
             screenSm: false,
             key: null,
@@ -21,9 +22,7 @@ export default {
     },
     methods:{
         getSearchResults(){
-            // this.$router.push({ path: '/' });
             if(this.$router.currentRoute._value.path != '/'){
-                console.log('sss');
                 this.$router.push({ path: '/' });
             }
             if(!this.isShowSearch && this.screenSm){

@@ -257,6 +257,7 @@ body{
 // Channel Details
 .channelDetails_wrapper{
     background-color: #f6f6f6;
+    margin-bottom: 1rem;
     .ch-thumb{
         height: 140px;
         width: 100%;
@@ -290,7 +291,7 @@ body{
 // Playlist
 .playlist-item{
     display: flex;
-    margin-top: 1rem;
+    margin-bottom: 1rem;
     .ply-thumb{
         position: relative;
         flex: 0 0 30%;

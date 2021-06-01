@@ -28,7 +28,6 @@ export default {
         const url = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${this.channelId}&key=${this.key}`;
         this.axios.get(url).then((response) => {
             this.channelDetails = response.data.items[0];
-            // console.log(this.channelDetails);
         })  
     }
 }
