@@ -4,7 +4,7 @@ export default createStore({
   state: {
     globalSearchResults: [],
     loading: false,
-    youtubeApiKey: 'AIzaSyDo3mt63gWu22E_Hysm6bGUKIZ7JfKhxqw',
+    youtubeApiKey: 'AIzaSyDfctuPZLurpAIPL64soWm7ocEqjC5olS4',
     searchKeyword: null,
   },
   getters: {
