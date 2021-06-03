@@ -21,13 +21,25 @@ export default {
             key: null,
         }
     },
+    methods:{
+        getRelatedVideos(){
+            this.relatedVideoId = this.$route.params.id;
+            this.key = this.$store.state.youtubeApiKey;
+            const url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${this.relatedVideoId}&type=video&key=${this.key}`;
+            this.axios.get(url).then((response) => {
+                this.items = response.data.items;
+            })  
+        },
+    },
     created(){
-        this.relatedVideoId = this.$route.params.id;
-        this.key = this.$store.state.youtubeApiKey;
-        const url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${this.relatedVideoId}&type=video&key=${this.key}`;
-        this.axios.get(url).then((response) => {
-            this.items = response.data.items;
-        })  
+        this.getRelatedVideos();
+    },
+    watch: { 
+        $route(to, from) { 
+            if(to !== from){ 
+                this.getRelatedVideos();
+            } 
+        } 
     }
 }
 </script>
