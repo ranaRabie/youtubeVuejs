@@ -1,12 +1,12 @@
 <template>
     <div class="channelDetails_wrapper">
         <div class="ch-thumb">
-            <img :src="channelData.snippet.thumbnails.high.url" alt="">
+            <img :src="thumb" alt="">
         </div>
         <div class="ch-data">
-            <img :src="channelData.snippet.thumbnails.high.url" alt="">
-            <div class="ch-tit">{{channelData.snippet.title}}</div>
-            <div class="ch-subs">{{channelData.statistics.subscriberCount}} Subscribers</div>
+            <img :src="thumb" alt="">
+            <div class="ch-tit">{{title}}</div>
+            <div class="ch-subs">{{subscriberCount}} Subscribers</div>
         </div>
     </div>
 </template>
@@ -17,5 +17,16 @@ export default {
     props: {
         channelData: null,
     },
+    computed:{
+      title(){
+          return this.channelData != null ? this.channelData.snippet.title : ''
+      },
+      thumb(){
+          return this.channelData != null ? this.channelData.snippet.thumbnails.high.url : ''
+      },
+      subscriberCount(){
+          return this.channelData != null ? this.channelData.statistics.subscriberCount : ''
+      },
+  }
 }
 </script>

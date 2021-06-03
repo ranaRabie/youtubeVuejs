@@ -46,7 +46,7 @@ export default {
             this.key = this.$store.state.youtubeApiKey;
             this.keyword = this.$store.state.searchKeyword;
             this.isLoadingMore = true;
-            this.axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${this.keyword}&type=playlist&pageToken=${this.nextPage}&key=${this.key}`).then((response) => {
+            this.axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${this.keyword}&pageToken=${this.nextPage}&key=${this.key}`).then((response) => {
                 const data = response.data.items;
                 data.forEach(element => {
                     this.items.push(element);

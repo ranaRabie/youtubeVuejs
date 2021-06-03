@@ -23,7 +23,7 @@ export default {
     methods:{
         getSearchResults(){
             if(this.$router.currentRoute._value.path != '/'){
-                this.$router.push({ path: '/' });
+                this.$router.push({ name: 'Search' })
             }
             if(!this.isShowSearch && this.screenSm){
                 this.isShowSearch = true;

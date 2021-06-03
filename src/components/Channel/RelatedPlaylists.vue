@@ -27,7 +27,6 @@ export default {
         const url = `https://youtube.googleapis.com/youtube/v3/playlists?part=snippet%2CcontentDetails&channelId=${this.relatedPlaylistsId}&maxResults=25&key=${this.key}`;
         this.axios.get(url).then((response) => {
             this.items = response.data.items;
-            console.log(this.items);
         })  
     }
 }
