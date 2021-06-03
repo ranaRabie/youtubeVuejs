@@ -4,7 +4,7 @@
         <div class="video-data">
             <div class="data-row">
                 <div class="vid-tit">{{title}}</div>
-                <div class="vid-views">{{viewCount}} views</div>
+                <div class="vid-views"><span>{{viewCount}}</span> views</div>
             </div>
             <div class="data-row">
                 <div class="vid-likes">likes: {{likesCount}}</div>

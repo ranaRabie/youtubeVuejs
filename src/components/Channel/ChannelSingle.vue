@@ -6,7 +6,7 @@
         <div class="ch-data">
             <img :src="thumb" alt="">
             <div class="ch-tit">{{title}}</div>
-            <div class="ch-subs">{{subscriberCount}} Subscribers</div>
+            <div class="ch-subs"><span>{{subscriberCount}}</span> Subscribers</div>
         </div>
     </div>
 </template>
